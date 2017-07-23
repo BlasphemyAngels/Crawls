@@ -18,10 +18,12 @@ class BaiduEntryPipeline(object):
         return item
 
     def spider_closed(self, spider):
-        with open("res", "w") as f:
+        with open("res", "a+") as f:
             for key, value in self._contents.items():
                 if key is None:
+                    print(key)
                     print(value)
+                    continue
                 f.write(key + "\t" + str(value) + "\n")
 
     @classmethod
